@@ -1,6 +1,4 @@
-﻿using System.Diagnostics;
-using UnityEngine.Events;
-using UnityEngine;
+﻿using UnityEngine.Events;
 
 namespace Assets.Scripts
 {
