@@ -5,6 +5,9 @@ namespace Assets.Scripts
     [RequireComponent(typeof(Rigidbody2D))]
     public class MoverController : MonoBehaviour
     {
+        private const string CommandHorizontalInput = "Horizontal";
+        private const string CommandRun = "isRun";
+
         [SerializeField] private float _speed;
         [SerializeField] private Animator _animator;
 
@@ -20,7 +23,7 @@ namespace Assets.Scripts
 
         private void Update()
         {
-            _inputX = Input.GetAxis("Horizontal");
+            _inputX = Input.GetAxis(CommandHorizontalInput);
 
             if (_inputX != 0)
             {
@@ -60,7 +63,7 @@ namespace Assets.Scripts
 
         private void UseAnimationRun(bool isRun)
         {
-            _animator.SetBool("isRun", isRun);
+            _animator.SetBool(CommandRun, isRun);
         }
     }
 }

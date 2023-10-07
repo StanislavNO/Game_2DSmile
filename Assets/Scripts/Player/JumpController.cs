@@ -6,6 +6,8 @@ namespace Assets.Scripts
     [RequireComponent(typeof(Rigidbody2D))]
     public class JumpController : MonoBehaviour
     {
+        private const string CommandJump = "jump";
+
         [SerializeField] private float _height;
         [SerializeField] private Animator _animator;
 
@@ -36,7 +38,7 @@ namespace Assets.Scripts
             if (collider.TryGetComponent<TilemapCollider2D>(out TilemapCollider2D ground))
             {
                 _isJumping = true;
-                _animator.SetTrigger("jump");
+                _animator.SetTrigger(CommandJump);
             }
         }
     }
