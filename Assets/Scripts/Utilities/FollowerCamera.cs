@@ -2,7 +2,7 @@
 
 namespace Assets.Scripts
 {
-    public class TargetMover : MonoBehaviour
+    public class FollowerCamera : MonoBehaviour
     {
         [SerializeField] private Player _target;
         [SerializeField][Range(0, 4)] private float _speed;
