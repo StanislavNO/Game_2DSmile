@@ -5,8 +5,8 @@ namespace Assets.Scripts
     public class Patrolling : MonoBehaviour
     {
         [SerializeField] private float _speed;
+        [SerializeField] private float _pathLength = 1;
 
-        private float _pathLength = 1;
         private int _directionLeft = -1;
 
         private Vector3 _leftPosition;
@@ -24,16 +24,12 @@ namespace Assets.Scripts
             _targetPosition = _leftPosition;
         }
 
+
         private void Update()
         {
             Patrol();
             TryFlip();
             TryChangingPath();
-        }
-
-        public void SetPathLength(int value)
-        {
-            _pathLength = value;
         }
 
         private void Patrol()
