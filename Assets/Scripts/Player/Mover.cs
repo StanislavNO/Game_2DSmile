@@ -3,27 +3,29 @@
 namespace Assets.Scripts
 {
     [RequireComponent(typeof(Rigidbody2D))]
-    public class MoverController : MonoBehaviour
+    public class Mover : MonoBehaviour
     {
-        private const string CommandHorizontalInput = "Horizontal";
-        private const string CommandRun = "isRun";
+        private const string HorizontalInput = "Horizontal";
 
         [SerializeField] private float _speed;
         [SerializeField] private Animator _animator;
 
+        private readonly int Run = Animator.StringToHash("isRun");
         private Rigidbody2D _rigidBody;
-        private float _inputX;
-        private bool _isRun = false;
+
+        private bool _isRun;
         private bool _leftRun;
+        private float _inputX;
 
         private void Start()
         {
+            _isRun = false;
             _rigidBody = GetComponent<Rigidbody2D>();
         }
 
         private void Update()
         {
-            _inputX = Input.GetAxis(CommandHorizontalInput);
+            _inputX = Input.GetAxis(HorizontalInput);
 
             if (_inputX != 0)
             {
@@ -33,7 +35,7 @@ namespace Assets.Scripts
                     _leftRun = true;
                 else
                     _leftRun = false;
-                
+
                 Flip(_leftRun);
             }
             else
@@ -61,9 +63,6 @@ namespace Assets.Scripts
             transform.localScale = scale;
         }
 
-        private void UseAnimationRun(bool isRun)
-        {
-            _animator.SetBool(CommandRun, isRun);
-        }
+        private void UseAnimationRun(bool isRun) => _animator.SetBool(Run, isRun);
     }
 }

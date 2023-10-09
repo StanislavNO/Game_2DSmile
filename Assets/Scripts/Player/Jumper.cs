@@ -4,13 +4,12 @@ using UnityEngine.Tilemaps;
 namespace Assets.Scripts
 {
     [RequireComponent(typeof(Rigidbody2D))]
-    public class JumpController : MonoBehaviour
+    public class Jumper : MonoBehaviour
     {
-        private const string CommandJump = "jump";
-
         [SerializeField] private float _height;
         [SerializeField] private Animator _animator;
 
+        private readonly int Jump = Animator.StringToHash("jump");
         private bool _isJumping;
         private Rigidbody2D _rigidBody;
 
@@ -38,7 +37,7 @@ namespace Assets.Scripts
             if (collider.TryGetComponent<TilemapCollider2D>(out TilemapCollider2D ground))
             {
                 _isJumping = true;
-                _animator.SetTrigger(CommandJump);
+                _animator.SetTrigger(Jump);
             }
         }
     }
