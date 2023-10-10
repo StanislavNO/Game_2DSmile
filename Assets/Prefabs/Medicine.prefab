@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5535823995347511058}
   - component: {fileID: 8228840377542912599}
   - component: {fileID: -2328743809839583237}
+  - component: {fileID: 4635598669105078801}
   m_Layer: 0
   m_Name: Medicine
   m_TagString: Untagged
@@ -98,6 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92913611f8f200a4592d0d10f5adb404, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _healthPoint: 1
 --- !u!58 &-2328743809839583237
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -114,3 +116,24 @@ CircleCollider2D:
   m_Offset: {x: 0.015625, y: 0.015625}
   serializedVersion: 2
   m_Radius: 0.140625
+--- !u!95 &4635598669105078801
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 25810476604197812}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 44b15a5e667bf4f4fa3e51914df8be7f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
