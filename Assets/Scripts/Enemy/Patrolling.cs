@@ -40,17 +40,6 @@ namespace Assets.Scripts
                 _speed * Time.deltaTime);
         }
 
-        private void TryChangingPath()
-        {
-            if (transform.position.x == _targetPosition.x)
-            {
-                if (_targetPosition.x == _leftPosition.x)
-                    _targetPosition = _rightPosition;
-                else
-                    _targetPosition = _leftPosition;
-            }
-        }
-
         private void TryFlip()
         {
             Vector3 scale = transform.localScale;
@@ -62,6 +51,17 @@ namespace Assets.Scripts
             }
 
             transform.localScale = scale;
+        }
+
+        private void TryChangingPath()
+        {
+            if (transform.position.x == _targetPosition.x)
+            {
+                if (_targetPosition.x == _leftPosition.x)
+                    _targetPosition = _rightPosition;
+                else
+                    _targetPosition = _leftPosition;
+            }
         }
     }
 }

@@ -6,10 +6,7 @@ namespace Assets.Scripts
     {
         public static readonly UnityEvent CoinPickedUp = new UnityEvent();
 
-        public static void CallCoinPickedUp()
-        {
-            if (CoinPickedUp != null)
-                CoinPickedUp.Invoke();
-        }
+        public static void CallCoinPickedUp() => CoinPickedUp?.Invoke();
+                
     }
 }
