@@ -1,41 +1,53 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 namespace Assets.Scripts
 {
     public class Player : MonoBehaviour
     {
-        [SerializeField] private UnityEvent _damageDown;
-
-        private int _health = 500;
+        private int _health = 5;
 
         public int Health => _health;
 
-        private void OnTriggerEnter2D(Collider2D collider)
+        private void Start()
         {
-            if (collider.TryGetComponent(out Enemy enemy))
+            EventBus.MedicinePickedUp.AddListener(Heal);
+        }
+
+        private void Update()
+        {
+            if (_health <= 0) 
             {
-                StartCoroutine(DamageSetter());
+                StartCoroutine(GetDeath());
             }
         }
 
-        private void OnTriggerExit2D(Collider2D collider)
+        private void Heal(int value)
         {
-            StopAllCoroutines();
+            if (value > 0)
+            {
+                _health += value;
+            }
+
         }
 
-        private  IEnumerator DamageSetter()
+        private void TakeDamage()
         {
-            WaitForSeconds delay = new WaitForSeconds(1);
 
-            while (_health > 0)
-            {
-                _health--;
-                _damageDown.Invoke();
+        }
 
-                yield return delay;
-            }
+        private IEnumerator GetDeath()
+        {
+            float pauseTime = 0f;
+            float delay = 3f;
+
+            Time.timeScale = pauseTime;
+
+            yield return new WaitForSeconds(delay);
+
+            SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
         }
     }
 }

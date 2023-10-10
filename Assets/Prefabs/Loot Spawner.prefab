@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5857394688879640061}
   - component: {fileID: 5857394688879640060}
   m_Layer: 0
-  m_Name: Coin Spawner
+  m_Name: Loot Spawner
   m_TagString: Untagged
   m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -44,4 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b914faae74353a24583e1979b4600baa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _coin: {fileID: 6806981540451417680, guid: 652adbbb00849ce4ba876d4ec158ffc3, type: 3}
+  _loots:
+  - {fileID: 6806981540451417680, guid: 652adbbb00849ce4ba876d4ec158ffc3, type: 3}
+  - {fileID: 6806981540451417680, guid: 652adbbb00849ce4ba876d4ec158ffc3, type: 3}
+  - {fileID: 8228840377542912599, guid: a392e3ea9a83b134bb40e9ccef5ebde0, type: 3}
