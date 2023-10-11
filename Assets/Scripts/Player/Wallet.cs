@@ -8,10 +8,7 @@ namespace Assets.Scripts
 
         public int Coins => _coins;
 
-        private void OnEnable()
-        {
-            EventBus.CoinPickedUp.AddListener(AddCoin);
-        }
+        private void OnEnable() => EventBus.CoinPickedUp.AddListener(AddCoin);
 
         private void AddCoin() => _coins++;
     }

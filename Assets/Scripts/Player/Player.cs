@@ -1,15 +1,16 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace Assets.Scripts
 {
     public class Player : MonoBehaviour
     {
-        private int _health = 5;
-        private int _minHealth = 0;
+        [SerializeField] private int _damage;
+        [SerializeField] private int _health = 1;
 
-        public int Health { get => _health; }
+        private int _coolDown = 1;
+        private int _minHealth = 0;
+        private bool canAttack = true;
 
         private void Start()
         {
@@ -20,16 +21,27 @@ namespace Assets.Scripts
         {
             if (_health <= 0)
             {
-                StartCoroutine(GetDeath());
+                GameOver();
             }
         }
 
-        private void OnTriggerEnter2D(Collider2D collision)
+        private void OnTriggerStay2D(Collider2D collision)
         {
-            if(collision.TryGetComponent<Enemy>(out Enemy enemy))
+            if (collision.TryGetComponent<Enemy>(out Enemy enemy))
             {
-                
+                if (canAttack) 
+                { 
+                    enemy.TakeDamage(Attack());
+                    StartCoroutine(AttackCoolDown());
+                }
             }
+        }
+
+        private IEnumerator AttackCoolDown()
+        {
+            canAttack = false;
+            yield return new WaitForSecondsRealtime(_coolDown);
+            canAttack = true;
         }
 
         public void TakeDamage(int value)
@@ -39,7 +51,7 @@ namespace Assets.Scripts
                 if (_health > value)
                     _health -= value;
                 else
-                    GetDeath();
+                    GameOver();
             }
         }
 
@@ -49,19 +61,21 @@ namespace Assets.Scripts
             {
                 _health += value;
             }
-
         }
 
-        private IEnumerator GetDeath()
+        private int Attack()
         {
+            return _damage;
+        }
+
+        private void GameOver()
+        {
+            int randomNumber = 100;
             float pauseTime = 0f;
-            float delay = 3f;
+
+            transform.position += Vector3.up * randomNumber;
 
             Time.timeScale = pauseTime;
-
-            yield return new WaitForSecondsRealtime(delay);
-
-            SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
         }
     }
 }

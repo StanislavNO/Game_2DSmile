@@ -4,11 +4,12 @@ namespace Assets.Scripts
 {
     public abstract class Enemy : MonoBehaviour
     {
-        private int _health;
-        protected int _minHealth = 0;
-        protected int _damage = 1;
+        [SerializeField] Animator _animator;
+        [SerializeField] protected int _health;
+        [SerializeField] protected int _damage;
 
-        public int Damage => _damage;
+        protected int _minHealth = 0;
+        private readonly int AnimationTakeDamage = Animator.StringToHash("TakeDamage");
 
         public void TakeDamage(int damage)
         {
@@ -19,6 +20,8 @@ namespace Assets.Scripts
                 else
                     Destroy(gameObject);
             }
+
+            _animator.SetTrigger(AnimationTakeDamage);
         }
     }
 }

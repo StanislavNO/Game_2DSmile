@@ -7,14 +7,15 @@ namespace Assets.Scripts
         [SerializeField] private float _speed;
         [SerializeField] private float _pathLength = 1;
 
-        private int _directionLeft = -1;
-
         private Vector3 _leftPosition;
         private Vector3 _rightPosition;
         private Vector3 _targetPosition;
+        private Vector3 _startPosition;
 
         private void Start()
         {
+            _startPosition = transform.position;
+
             _rightPosition = transform.position +
                 Vector3.right * _pathLength;
 
@@ -32,6 +33,16 @@ namespace Assets.Scripts
             TryChangingPath();
         }
 
+        public void StartHunting(Vector3 playerPosition)
+        {
+            _targetPosition = playerPosition;
+        }
+
+        public void EndHunting()
+        {
+            _targetPosition = _startPosition;
+        }
+
         private void Patrol()
         {
             transform.position = Vector3.MoveTowards(
@@ -42,15 +53,16 @@ namespace Assets.Scripts
 
         private void TryFlip()
         {
-            Vector3 scale = transform.localScale;
+            Vector3 turnLeft = Vector3.up * 180;
             
-            if (_targetPosition == _leftPosition && transform.localScale.x > 0 ||
-                 _targetPosition == _rightPosition && transform.localScale.x < 0)
+            if (_targetPosition.x < transform.position.x)
             {
-                scale.x *= _directionLeft;
+                transform.rotation = Quaternion.Euler(turnLeft);
             }
-
-            transform.localScale = scale;
+            else
+            {
+                transform.rotation = Quaternion.Euler(Vector3.zero);
+            }
         }
 
         private void TryChangingPath()

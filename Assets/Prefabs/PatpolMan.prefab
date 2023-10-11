@@ -14,7 +14,8 @@ GameObject:
   - component: {fileID: 8242165308101085759}
   - component: {fileID: 8868265376794766489}
   - component: {fileID: 691424220517983151}
-  - component: {fileID: 1880580824933191469}
+  - component: {fileID: -4529554191002380611}
+  - component: {fileID: 2447895109374803249}
   m_Layer: 0
   m_Name: PatpolMan
   m_TagString: Untagged
@@ -115,6 +116,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfa7dfba8108c884680a996a4268059a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _animator: {fileID: 8868265376794766489}
+  _health: 3
+  _damage: 1
 --- !u!95 &8868265376794766489
 Animator:
   serializedVersion: 5
@@ -157,7 +161,21 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!61 &1880580824933191469
+--- !u!114 &-4529554191002380611
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2948611169910296490}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31c8da5e648ba6048bc585b98745d2ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _coolDown: 1
+  _damage: 1
+--- !u!61 &2447895109374803249
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -170,7 +188,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0019257069, y: 0.007236898}
+  m_Offset: {x: 0.0009280443, y: 0.01098299}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -181,5 +199,5 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.95407724, y: 0.5541916}
+  m_Size: {x: 0.9273598, y: 0.54245925}
   m_EdgeRadius: 0

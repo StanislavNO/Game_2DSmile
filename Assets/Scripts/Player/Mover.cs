@@ -56,9 +56,7 @@ namespace Assets.Scripts
             Vector3 scale = transform.localScale;
 
             if (scale.x > 0 && leftRun || scale.x < 0 && leftRun == false)
-            {
                 scale.x *= -1;
-            }
 
             transform.localScale = scale;
         }
