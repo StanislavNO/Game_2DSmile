@@ -15,7 +15,7 @@ namespace Assets.Scripts
 
         private void OnTriggerStay2D(Collider2D collision)
         {
-            if (collision.TryGetComponent<Player>(out Player player))
+            if (collision.TryGetComponent<Health>(out Health player))
             {
                 if (_enemy != null)
                 {
@@ -31,7 +31,7 @@ namespace Assets.Scripts
 
         private void OnTriggerExit2D(Collider2D collision)
         {
-            if (collision.TryGetComponent<Player>(out Player player))
+            if (collision.TryGetComponent<Health>(out Health player))
             {
                 _enemy?.EndHunting();
             }

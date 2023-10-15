@@ -2,6 +2,7 @@
 
 namespace Assets.Scripts
 {
+    [RequireComponent(typeof(SpriteRenderer))]
     public class Patrolling : MonoBehaviour
     {
         [SerializeField] private float _speed;
@@ -12,8 +13,12 @@ namespace Assets.Scripts
         private Vector3 _targetPosition;
         private Vector3 _startPosition;
 
+        private SpriteRenderer _spriteRenderer;
+
         private void Start()
         {
+            _spriteRenderer = GetComponent<SpriteRenderer>();
+
             _startPosition = transform.position;
 
             _rightPosition = transform.position +
@@ -53,16 +58,10 @@ namespace Assets.Scripts
 
         private void TryFlip()
         {
-            Vector3 turnLeft = Vector3.up * 180;
-            
             if (_targetPosition.x < transform.position.x)
-            {
-                transform.rotation = Quaternion.Euler(turnLeft);
-            }
+                _spriteRenderer.flipX = true;
             else
-            {
-                transform.rotation = Quaternion.Euler(Vector3.zero);
-            }
+                _spriteRenderer.flipX = false;
         }
 
         private void TryChangingPath()

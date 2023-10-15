@@ -16,11 +16,13 @@ namespace Assets.Scripts
         private bool _isRun;
         private bool _leftRun;
         private float _inputX;
+        private float _startLocalScaleX;
 
         private void Start()
         {
             _isRun = false;
             _rigidBody = GetComponent<Rigidbody2D>();
+            _startLocalScaleX = transform.localScale.x;
         }
 
         private void Update()
@@ -55,8 +57,9 @@ namespace Assets.Scripts
         {
             Vector3 scale = transform.localScale;
 
-            if (scale.x > 0 && leftRun || scale.x < 0 && leftRun == false)
-                scale.x *= -1;
+            if (scale.x == _startLocalScaleX && leftRun || 
+                scale.x != _startLocalScaleX && leftRun == false)
+                scale.x = -scale.x;
 
             transform.localScale = scale;
         }

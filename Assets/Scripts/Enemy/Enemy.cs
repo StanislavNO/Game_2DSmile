@@ -8,7 +8,7 @@ namespace Assets.Scripts
         [SerializeField] protected int _health;
         [SerializeField] protected int _damage;
 
-        protected int _minHealth = 0;
+        protected readonly int _minHealth = 0;
         private readonly int AnimationTakeDamage = Animator.StringToHash("TakeDamage");
 
         public void TakeDamage(int damage)

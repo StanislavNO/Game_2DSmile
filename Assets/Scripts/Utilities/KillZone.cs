@@ -9,7 +9,7 @@ namespace Assets.Scripts.Utilities
     {
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if (other.TryGetComponent<Player>(out Player player))
+            if (other.TryGetComponent<Health>(out Health player))
             {
                 SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
             }

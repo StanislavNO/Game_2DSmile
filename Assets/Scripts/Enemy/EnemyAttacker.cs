@@ -12,7 +12,7 @@ namespace Assets.Scripts
 
         private void OnTriggerStay2D(Collider2D collision)
         {
-            if (collision.TryGetComponent<Player>(out Player player))
+            if (collision.TryGetComponent<Health>(out Health player))
             {
                 if(canAttack)
                 {
@@ -21,7 +21,7 @@ namespace Assets.Scripts
             }
         }
 
-        private IEnumerator WaitAndAttack(float coolDown, Player player)
+        private IEnumerator WaitAndAttack(float coolDown, Health player)
         {
             canAttack = false;
 
