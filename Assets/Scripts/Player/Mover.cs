@@ -8,19 +8,17 @@ namespace Assets.Scripts
         private const string HorizontalInput = "Horizontal";
 
         [SerializeField] private float _speed;
-        [SerializeField] private Animator _animator;
 
-        private readonly int Run = Animator.StringToHash("isRun");
         private Rigidbody2D _rigidBody;
 
-        private bool _isRun;
         private bool _leftRun;
         private float _inputX;
         private float _startLocalScaleX;
 
+        public bool IsRun { get; private set; }
+
         private void Start()
         {
-            _isRun = false;
             _rigidBody = GetComponent<Rigidbody2D>();
             _startLocalScaleX = transform.localScale.x;
         }
@@ -31,7 +29,7 @@ namespace Assets.Scripts
 
             if (_inputX != 0)
             {
-                _isRun = true;
+                IsRun = true;
 
                 if (_inputX < 0)
                     _leftRun = true;
@@ -41,9 +39,9 @@ namespace Assets.Scripts
                 Flip(_leftRun);
             }
             else
-                _isRun = false;
-
-            UseAnimationRun(_isRun);
+            {
+                IsRun = false;
+            }
         }
 
         private void FixedUpdate()
@@ -57,13 +55,11 @@ namespace Assets.Scripts
         {
             Vector3 scale = transform.localScale;
 
-            if (scale.x == _startLocalScaleX && leftRun || 
+            if (scale.x == _startLocalScaleX && leftRun ||
                 scale.x != _startLocalScaleX && leftRun == false)
                 scale.x = -scale.x;
 
             transform.localScale = scale;
         }
-
-        private void UseAnimationRun(bool isRun) => _animator.SetBool(Run, isRun);
     }
 }

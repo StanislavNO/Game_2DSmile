@@ -4,7 +4,7 @@ namespace Assets.Scripts
 {
     public abstract class Enemy : MonoBehaviour
     {
-        [SerializeField] Animator _animator;
+        [SerializeField] private Animator _animator;
         [SerializeField] protected int _health;
         [SerializeField] protected int _damage;
 

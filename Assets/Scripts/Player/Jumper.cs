@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.Tilemaps;
 
 namespace Assets.Scripts
@@ -6,10 +7,9 @@ namespace Assets.Scripts
     [RequireComponent(typeof(Rigidbody2D))]
     public class Jumper : MonoBehaviour
     {
+        [SerializeField] private UnityEvent _jumpedUp;
         [SerializeField] private float _height;
-        [SerializeField] private Animator _animator;
 
-        private readonly int Jump = Animator.StringToHash("jump");
         private bool _isJumping;
         private Rigidbody2D _rigidBody;
 
@@ -37,7 +37,7 @@ namespace Assets.Scripts
             if (collider.TryGetComponent<TilemapCollider2D>(out TilemapCollider2D ground))
             {
                 _isJumping = true;
-                _animator.SetTrigger(Jump);
+                _jumpedUp.Invoke();
             }
         }
     }
