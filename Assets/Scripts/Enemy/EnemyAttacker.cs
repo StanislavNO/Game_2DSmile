@@ -23,12 +23,12 @@ namespace Assets.Scripts
 
         private IEnumerator WaitAndAttack(float coolDown, Health player)
         {
-            _canAttack = false;
+            WaitForSecondsRealtime delay = new WaitForSecondsRealtime(coolDown);
 
             player.TakeDamage(_damage);
 
-            yield return new WaitForSecondsRealtime(coolDown);
-
+            _canAttack = false;
+            yield return delay;
             _canAttack = true;
         }
     }
