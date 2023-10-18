@@ -8,13 +8,13 @@ namespace Assets.Scripts
         [SerializeField] private float _coolDown;
         [SerializeField] private int _damage;
 
-        private bool canAttack = true;
+        private bool _canAttack = true;
 
         private void OnTriggerStay2D(Collider2D collision)
         {
             if (collision.TryGetComponent<Health>(out Health player))
             {
-                if(canAttack)
+                if (_canAttack)
                 {
                     StartCoroutine(WaitAndAttack(_coolDown, player));
                 }
@@ -23,13 +23,13 @@ namespace Assets.Scripts
 
         private IEnumerator WaitAndAttack(float coolDown, Health player)
         {
-            canAttack = false;
+            _canAttack = false;
 
             player.TakeDamage(_damage);
 
             yield return new WaitForSecondsRealtime(coolDown);
 
-            canAttack = true;
+            _canAttack = true;
         }
     }
 }

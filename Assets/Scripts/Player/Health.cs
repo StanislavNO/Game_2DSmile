@@ -10,7 +10,7 @@ namespace Assets.Scripts
 
         private int _minPoint = 0;
 
-        private void Start()
+        private void OnEnable()
         {
             EventBus.MedicinePickedUp.AddListener(Heal);
         }

@@ -9,7 +9,7 @@ namespace Assets.Scripts
 
         private Vector3 _cameraOffset = new Vector3(0, 2, -10);
 
-        private void Update()
+        private void LateUpdate()
         {
             Vector3 newPosition = _target.transform.position;
             newPosition += _cameraOffset;

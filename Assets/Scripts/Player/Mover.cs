@@ -17,7 +17,7 @@ namespace Assets.Scripts
 
         public bool IsRun { get; private set; }
 
-        private void Start()
+        private void Awake()
         {
             _rigidBody = GetComponent<Rigidbody2D>();
             _startLocalScaleX = transform.localScale.x;

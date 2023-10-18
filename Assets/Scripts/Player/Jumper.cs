@@ -13,7 +13,7 @@ namespace Assets.Scripts
         private bool _isJumping;
         private Rigidbody2D _rigidBody;
 
-        private void Start()
+        private void Awake()
         {
             _rigidBody = GetComponent<Rigidbody2D>();
         }
@@ -26,7 +26,7 @@ namespace Assets.Scripts
 
         private void OnTriggerEnter2D(Collider2D collider)
         {
-            if(collider.TryGetComponent<TilemapCollider2D>(out TilemapCollider2D ground))
+            if (collider.TryGetComponent<TilemapCollider2D>(out TilemapCollider2D ground))
             {
                 _isJumping = false;
             }

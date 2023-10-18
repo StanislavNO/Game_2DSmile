@@ -4,24 +4,24 @@ namespace Assets.Scripts
 {
     public abstract class Enemy : MonoBehaviour
     {
+        [SerializeField] protected int Health;
+        [SerializeField] protected int Damage;
         [SerializeField] private Animator _animator;
-        [SerializeField] protected int _health;
-        [SerializeField] protected int _damage;
 
-        protected readonly int _minHealth = 0;
-        private readonly int AnimationTakeDamage = Animator.StringToHash("TakeDamage");
+        protected readonly int MinHealth = 0;
+        private readonly int _animationTakeDamage = Animator.StringToHash("TakeDamage");
 
         public void TakeDamage(int damage)
         {
-            if (damage > _minHealth)
+            if (damage > MinHealth)
             {
-                if (_health > damage)
-                    _health -= damage;
+                if (Health > damage)
+                    Health -= damage;
                 else
                     Destroy(gameObject);
             }
 
-            _animator.SetTrigger(AnimationTakeDamage);
+            _animator.SetTrigger(_animationTakeDamage);
         }
     }
 }
